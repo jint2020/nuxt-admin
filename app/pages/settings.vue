@@ -6,18 +6,13 @@ const links = [[{
   icon: 'i-lucide-user',
   to: '/settings',
   exact: true
-}], [{
-  label: 'Documentation',
-  icon: 'i-lucide-book-open',
-  to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt',
-  target: '_blank'
-}]] satisfies NavigationMenuItem[][]
+}], []] satisfies NavigationMenuItem[][]
 </script>
 
 <template>
   <UDashboardPanel id="settings" :ui="{ body: 'lg:py-12' }">
     <template #header>
-      <UDashboardNavbar title="Settings">
+      <UDashboardNavbar title="设置">
         <template #leading>
           <UDashboardSidebarCollapse />
         </template>
