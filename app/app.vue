@@ -13,12 +13,12 @@ useHead({
     { rel: 'icon', href: '/favicon.ico' }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: 'zh-CN'
   }
 })
 
 const title = '后台管理模板 - Nuxt UI'
-const description = 'A professional dashboard template built with Nuxt UI, featuring multiple pages, data visualization, and comprehensive management capabilities for creating powerful admin interfaces.'
+const description = '一个专业的仪表盘模板，使用 Nuxt UI 构建，包含多页面、数据可视化和完整的管理功能，便于创建可复用的后台管理界面。'
 
 useSeoMeta({
   title,

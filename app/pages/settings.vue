@@ -2,8 +2,8 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 
 const links = [[{
-  label: 'General',
-  icon: 'i-lucide-user',
+  label: '通用设置',
+  icon: 'i-lucide-settings-2',
   to: '/settings',
   exact: true
 }], []] satisfies NavigationMenuItem[][]

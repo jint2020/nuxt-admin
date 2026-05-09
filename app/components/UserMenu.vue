@@ -24,17 +24,17 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
   label: user.value.name,
   avatar: user.value.avatar
 }], [{
-  label: 'Profile',
+  label: '个人信息',
   icon: 'i-lucide-user'
 }, {
-  label: 'Settings',
+  label: '设置',
   icon: 'i-lucide-settings',
   to: '/settings'
 }], [{
-  label: 'Theme',
+  label: '主题颜色',
   icon: 'i-lucide-palette',
   children: [{
-    label: 'Primary',
+    label: '主色调',
     slot: 'chip',
     chip: appConfig.ui.colors.primary,
     content: {
@@ -54,7 +54,7 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
       }
     }))
   }, {
-    label: 'Neutral',
+    label: '中性色',
     slot: 'chip',
     chip: appConfig.ui.colors.neutral === 'neutral' ? 'old-neutral' : appConfig.ui.colors.neutral,
     content: {
@@ -75,10 +75,10 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
     }))
   }]
 }, {
-  label: 'Appearance',
+  label: '显示模式',
   icon: 'i-lucide-sun-moon',
   children: [{
-    label: 'Light',
+    label: '浅色',
     icon: 'i-lucide-sun',
     type: 'checkbox',
     checked: colorMode.value === 'light',
@@ -88,7 +88,7 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
       colorMode.preference = 'light'
     }
   }, {
-    label: 'Dark',
+    label: '深色',
     icon: 'i-lucide-moon',
     type: 'checkbox',
     checked: colorMode.value === 'dark',
@@ -102,7 +102,7 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
     }
   }]
 }], [{
-  label: 'Log out',
+  label: '退出登录',
   icon: 'i-lucide-log-out'
 }]]))
 </script>

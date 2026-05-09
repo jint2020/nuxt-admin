@@ -7,20 +7,20 @@ const toast = useToast()
 const open = ref(false)
 
 const links = [[{
-  label: 'Home',
+  label: '主页',
   icon: 'i-lucide-house',
   to: '/',
   onSelect: () => {
     open.value = false
   }
 }, {
-  label: 'Settings',
+  label: '设置',
   to: '/settings',
   icon: 'i-lucide-settings',
   defaultOpen: true,
   type: 'trigger',
   children: [{
-    label: 'General',
+    label: '通用设置',
     to: '/settings',
     exact: true,
     onSelect: () => {
@@ -29,7 +29,7 @@ const links = [[{
   }]
 }], [{
   label: '文档',
-  icon: 'i-lucide-info',
+  icon: 'i-lucide-book-open-text',
   to: '',
   target: '_blank'
 }]] satisfies NavigationMenuItem[][]
