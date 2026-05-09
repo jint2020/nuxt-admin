@@ -6,11 +6,11 @@ const links = [[{
   icon: 'i-lucide-settings-2',
   to: '/settings',
   exact: true
-}], [{
+}, {
   label: '权限管理',
   icon: 'i-lucide-shield',
   to: '/settings/permissions'
-}]] satisfies NavigationMenuItem[][]
+}], []] satisfies NavigationMenuItem[][]
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Role, User, Permission } from '~/types'
 
-// 仅管理员可访问
+// 配置路由守卫
 definePageMeta({
-  middleware: ['admin']
+  middleware: ['admin'] // 只有管理员可以访问此页面
 })
 
 const { isAdmin } = storeToRefs(useAuth())
