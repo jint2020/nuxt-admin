@@ -13,6 +13,16 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  ui: {
+    fonts: false
+  },
+
+  runtimeConfig: {
+    public: {
+      apiBase: ''
+    }
+  },
+
   routeRules: {
     '/api/**': {
       cors: true

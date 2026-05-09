@@ -4,6 +4,15 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 const route = useRoute()
 const toast = useToast()
 
+// 角色对应的徽标颜色
+const roleColorMap: Record<string, 'error' | 'warning' | 'neutral'> = {
+  admin: 'error',
+  editor: 'warning',
+  viewer: 'neutral'
+}
+
+const auth = useAuthStore()
+
 const open = ref(false)
 
 const links = [[{
@@ -114,6 +123,19 @@ onMounted(async () => {
       </template>
 
       <template #footer="{ collapsed }">
+        <!-- 显示当前用户姓名与角色徽标 -->
+        <div
+          v-if="!collapsed && auth.user"
+          class="px-3 py-1.5 flex items-center gap-2"
+        >
+          <span class="text-sm font-medium text-(--ui-text) truncate flex-1">{{ auth.user.name }}</span>
+          <UBadge
+            :label="auth.user.role"
+            :color="roleColorMap[auth.user.role] ?? 'neutral'"
+            size="xs"
+            variant="subtle"
+          />
+        </div>
         <UserMenu :collapsed="collapsed" />
       </template>
     </UDashboardSidebar>

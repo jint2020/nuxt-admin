@@ -101,9 +101,6 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
       e.preventDefault()
     }
   }]
-}], [{
-  label: '退出登录',
-  icon: 'i-lucide-log-out'
 }]]))
 </script>
 
