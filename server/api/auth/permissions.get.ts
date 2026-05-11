@@ -1,4 +1,5 @@
-import { getPermissions, getUserByToken, getRolePermissions } from '../../utils/auth'
+import { getPermissions, getRolePermissions } from '../../utils/auth'
+import { requireAuthenticatedUser } from '../../utils/auth-event'
 
 export default defineEventHandler(async (event) => {
   const token = getCookie(event, 'auth_token')

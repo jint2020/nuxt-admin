@@ -1,4 +1,4 @@
-import { getUserByToken } from '../../utils/auth'
+import { resolveUserFromEvent } from '../../utils/auth-event'
 
 export default defineEventHandler(async (event) => {
   const token = getCookie(event, 'auth_token')
