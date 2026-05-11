@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { PERMISSION_MODULES, ROLES } from '~/app/utils/permissions'
 import type { Role, User, Permission } from '~/types'
 
 // 配置路由守卫
@@ -17,15 +18,13 @@ const roleConfig = {
 
 // 从API获取用户列表和权限定义
 const { data: usersData } = await useFetch<User[]>('/api/auth/users')
-const { data: permissionsData } = await useFetch<{ all: Permission[] }>('/api/auth/permissions')
-
 const users = ref<User[]>(usersData.value ?? [])
-const permissions = ref<Permission[]>(permissionsData.value?.all ?? [])
+const permissions = ref<Permission[]>(structuredClone(PERMISSION_MODULES.flatMap(module => module.permissions)) as Permission[])
 
 // 角色选项
-const roleOptions = Object.entries(roleConfig).map(([value, config]) => ({
-  value: value as Role,
-  label: config.label
+const roleOptions = ROLES.map((role) => ({
+  value: role as Role,
+  label: roleConfig[role as Role].label
 }))
 
 // 用户表格列定义
