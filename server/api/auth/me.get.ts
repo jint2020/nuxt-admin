@@ -1,23 +1,14 @@
-import { getUserByToken } from '../../utils/auth'
+import { resolveUserFromEvent } from '../../utils/auth-event'
 
-export default defineEventHandler(async (event) => {
-  const token = getHeader(event, 'Authorization')?.replace('Bearer ', '')
-
-  if (!token) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: '未提供认证令牌'
-    })
-  }
-
-  const user = getUserByToken(token)
+export default defineEventHandler((event) => {
+  const user = resolveUserFromEvent(event)
 
   if (!user) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: '令牌无效或已过期'
-    })
+    return { user: null }
   }
+
+  event.context.user = user
+  event.context.role = user.role
 
   return { user }
 })
