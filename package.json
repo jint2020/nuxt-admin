@@ -8,7 +8,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "check:permissions": "node --experimental-strip-types scripts/check-permissions.ts"
   },
   "dependencies": {
     "@iconify-json/akar-icons": "^1.2.7",

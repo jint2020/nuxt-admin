@@ -1,4 +1,5 @@
 import type { User, Role, Permission } from '~/types'
+import { PERMISSIONS } from '~/app/utils/permissions'
 
 // 模拟用户数据库
 const users: User[] = [
@@ -25,45 +26,7 @@ const users: User[] = [
   }
 ]
 
-// 权限列表定义
-const permissions: Permission[] = [
-  {
-    id: 'user:read',
-    name: '查看用户',
-    description: '查看用户列表和详情',
-    roles: ['admin', 'editor', 'viewer']
-  },
-  {
-    id: 'user:write',
-    name: '编辑用户',
-    description: '创建和编辑用户信息',
-    roles: ['admin', 'editor']
-  },
-  {
-    id: 'user:delete',
-    name: '删除用户',
-    description: '删除用户账号',
-    roles: ['admin']
-  },
-  {
-    id: 'settings:read',
-    name: '查看设置',
-    description: '查看系统设置',
-    roles: ['admin', 'editor', 'viewer']
-  },
-  {
-    id: 'settings:write',
-    name: '修改设置',
-    description: '修改系统设置',
-    roles: ['admin']
-  },
-  {
-    id: 'roles:manage',
-    name: '管理角色',
-    description: '管理用户角色和权限',
-    roles: ['admin']
-  }
-]
+// 权限定义来自共享模块
 
 // 演示用静态 token 映射（实际项目中 token 由 SSO/后端颁发）
 const demoTokens = new Map<string, number>([
@@ -96,17 +59,17 @@ export function getUserByToken(token: string): User | undefined {
 
 // 获取全部权限定义
 export function getPermissions(): Permission[] {
-  return permissions
+  return PERMISSIONS as Permission[]
 }
 
 // 检查指定角色是否拥有某权限
 export function hasPermission(role: Role, permissionId: string): boolean {
-  const perm = permissions.find((p) => p.id === permissionId)
+  const perm = PERMISSIONS.find((p) => p.id === permissionId)
   if (!perm) return false
   return perm.roles.includes(role)
 }
 
 // 获取指定角色的所有权限
 export function getRolePermissions(role: Role): Permission[] {
-  return permissions.filter((p) => p.roles.includes(role))
+  return (PERMISSIONS as Permission[]).filter((p) => p.roles.includes(role))
 }
