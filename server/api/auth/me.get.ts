@@ -1,14 +1,23 @@
 import { resolveUserFromEvent } from '../../utils/auth-event'
 
-export default defineEventHandler((event) => {
-  const user = resolveUserFromEvent(event)
+export default defineEventHandler(async (event) => {
+  const token = getCookie(event, 'auth_token')
 
-  if (!user) {
-    return { user: null }
+  if (!token) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: '未登录'
+    })
   }
 
-  event.context.user = user
-  event.context.role = user.role
+  const user = getUserByToken(token)
 
-  return { user }
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Session 已过期'
+    })
+  }
+
+  return user
 })
